@@ -9,13 +9,12 @@ import rx.observers.Observers
 import rx.subjects.PublishSubject
 import javax.inject.Inject
 
-class MainPresenter {
+class MainPresenter @Inject constructor(userPreferences: UserPreferences) {
 
     val noteListObservable: Observable<List<BaseAdapterItem>>
     val openNoteSubject: PublishSubject<Long> = PublishSubject.create()
 
-    @Inject
-    constructor(userPreferences: UserPreferences) {
+    init {
         this.noteListObservable = userPreferences
                 .getAllNotesObservable()
                 .map({ list ->

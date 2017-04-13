@@ -4,6 +4,7 @@ import android.content.res.Resources
 import com.appunite.rx.dagger.NetworkScheduler
 import com.appunite.rx.dagger.UiScheduler
 import com.example.boris.noteskotlin.MainApplication
+import com.example.boris.noteskotlin.UserPreferences
 import com.google.gson.Gson
 import dagger.Component
 import javax.inject.Singleton
@@ -25,6 +26,8 @@ interface AppComponent {
     fun provideResources(): Resources
 
     fun provideGson(): Gson
+
+    fun provideUserPreferences(): UserPreferences
 
     /**
      * Inject methods for Activities that dont need any special parameters to pass

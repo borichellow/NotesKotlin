@@ -8,6 +8,8 @@
         android:id="@+id/note_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
         android:textColor="@color/text_color"
         android:textSize="18sp" />
 
@@ -15,6 +17,8 @@
         android:id="@+id/note_item_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
         android:textColor="@color/hint_color"
         android:textSize="14sp" />
 

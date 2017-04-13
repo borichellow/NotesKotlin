@@ -1,7 +1,6 @@
 package com.example.boris.noteskotlin.dagger
 
 import android.content.Context
-import android.content.res.Resources
 import com.appunite.rx.android.MyAndroidSchedulers
 import com.appunite.rx.dagger.NetworkScheduler
 import com.appunite.rx.dagger.UiScheduler
@@ -15,26 +14,20 @@ import dagger.Provides
 import rx.schedulers.Schedulers
 import javax.inject.Singleton
 
-@Module class AppModule (val app : MainApplication) {
+@Module class AppModule(val app: MainApplication) {
 
     @Provides
     @Singleton
     @ForApplication
-    fun applicationContext(): Context {
-        return app.applicationContext
-    }
+    fun applicationContext(): Context = app.applicationContext
 
     @Provides
-    internal fun provideResources(@ForApplication context: Context): Resources {
-        return context.resources
-    }
+    internal fun provideResources(@ForApplication context: Context) = context.resources
 
 
     @Provides
     @Singleton
-    fun userPreferences(@ForApplication context: Context, gson: Gson): UserPreferences {
-        return UserPreferences(context, gson)
-    }
+    fun provideUserPreferences(@ForApplication context: Context, gson: Gson) = UserPreferences(context, gson)
 
     @Singleton
     @Provides
@@ -47,14 +40,10 @@ import javax.inject.Singleton
     @UiScheduler
     @Provides
     @Singleton
-    internal fun provideUiScheduler(): rx.Scheduler {
-        return MyAndroidSchedulers.mainThread()
-    }
+    internal fun provideUiScheduler() = MyAndroidSchedulers.mainThread()
 
     @NetworkScheduler
     @Provides
     @Singleton
-    internal fun provideNetworkScheduler(): rx.Scheduler {
-        return Schedulers.io()
-    }
+    internal fun provideNetworkScheduler() = Schedulers.io()
 }
